@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Project Meridian</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper: #f6f3ec;
+    --paper-line: #d8d2c2;
+    --ink: #1b2a4a;
+    --ink-soft: #4a5878;
+    --red-pen: #b3401f;
+    --gold: #b8862c;
+    --card: #fffdf8;
+    --serif: 'Source Serif 4', serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      repeating-linear-gradient(transparent 0 38px, var(--paper-line) 38px 39px);
+    color: var(--ink);
+    font-family: var(--sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Margin rule like notebook paper */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; bottom: 0; left: 64px;
+    width: 1px;
+    background: rgba(179, 64, 31, 0.18);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+  }
+
+  /* Nav */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0 20px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  .brand-mark {
+    width: 30px; height: 30px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    transform: rotate(-8deg);
+  }
+
+  nav a.cta {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 0.6rem 1.3rem;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  nav a.cta:hover { background: var(--red-pen); transform: translateY(-1px); }
+
+  /* Hero */
+  .hero {
+    padding: 60px 0 50px;
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red-pen);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--red-pen);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    max-width: 760px;
+  }
+
+  h1 .underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  h1 .underline::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.5em;
+    background: rgba(184, 134, 44, 0.25);
+    z-index: -1;
+  }
+
+  .hero p.lede {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    margin-top: 2.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: var(--red-pen);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: #8f3119; transform: translateY(-1px); }
+
+  .scroll-hint {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* Score badge signature element */
+  .grade-stamp {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 132px;
+    height: 132px;
+    border: 3px solid var(--red-pen);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(8deg);
+    color: var(--red-pen);
+    font-family: var(--serif);
+    animation: stampIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes stampIn {
+    from { opacity: 0; transform: rotate(8deg) scale(0.5); }
+    to   { opacity: 1; transform: rotate(8deg) scale(1); }
+  }
+
+  .grade-stamp .score { font-size: 2.2rem; font-weight: 700; line-height: 1; }
+  .grade-stamp .label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+
+  @media (max-width: 700px) {
+    .grade-stamp { position: static; margin: 2rem auto 0; transform: rotate(-4deg); }
+  }
+
+  /* Info cards section */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 4rem 0 1.2rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--paper-line);
+    border: 1px solid var(--paper-line);
+  }
+
+  .card {
+    background: var(--card);
+    padding: 1.6rem;
+    transition: background 0.2s;
+  }
+
+  .card:hover { background: #fff; }
+
+  .card .num {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--red-pen);
+    margin-bottom: 0.6rem;
+  }
+
+  .card h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* How it works */
+  .how {
+    margin-top: 4rem;
+    padding: 2.4rem;
+    background: var(--card);
+    border: 1px solid var(--paper-line);
+    border-left: 3px solid var(--ink);
+  }
+
+  .how h2 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 0.9rem;
+  }
+
+  .step-dot {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .step strong {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+    font-size: 0.92rem;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--paper-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+  }
+
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover { color: var(--red-pen); }
+
+  @media (max-width: 700px) {
+    .cards, .steps { grid-template-columns: 1fr; }
+    body::before { left: 24px; }
+    .wrap { padding: 0 20px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav>
+    <div class="brand">
+      <span class="brand-mark">PM</span>
+      Project Meridian
+    </div>
+    <a class="cta" href="/predict">Run inference →</a>
+  </nav>
+
+  <section class="hero">
+    <div class="grade-stamp">
+      <span class="score">v0.3</span>
+      <span class="label">Build</span>
+    </div>
+
+    <div class="eyebrow">Inference Engine · ML Pipeline</div>
+    <h1>A modular pipeline for <span class="underline">structured prediction</span> at scale.</h1>
+    <p class="lede">
+      Project Meridian ingests structured input data, runs it through a trained
+      regression pipeline with preprocessing baked in, and returns a calibrated
+      prediction — end to end, in milliseconds.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="/predict">
+        Run inference →
+      </a>
+      <a class="scroll-hint" href="#how">↓ how it works</a>
+    </div>
+  </section>
+
+  <div class="section-label">// Pipeline Inputs</div>
+  <div class="cards">
+    <div class="card">
+      <div class="num">01</div>
+      <h3>Categorical Signals</h3>
+      <p>Encoded categorical attributes capturing structural and contextual factors in the input space.</p>
+    </div>
+    <div class="card">
+      <div class="num">02</div>
+      <h3>Contextual Features</h3>
+      <p>Secondary attributes that proxy for environment and prior conditions affecting the target variable.</p>
+    </div>
+    <div class="card">
+      <div class="num">03</div>
+      <h3>Numerical Signals</h3>
+      <p>Continuous input scores — the strongest predictors feeding directly into the trained model.</p>
+    </div>
+  </div>
+
+  <div class="how" id="how">
+    <h2>How the pipeline works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-dot">1</div>
+        <p><strong>Submit input</strong> Pass 7 structured fields through the intake form.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">2</div>
+        <p><strong>Pipeline runs inference</strong> A serialized preprocessing + model pipeline transforms and scores the input.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">3</div>
+        <p><strong>Return prediction</strong> The calibrated output is returned in the same request cycle.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Project Meridian — Modular Inference Pipeline</span>
+    <a href="/predict">Run inference →</a>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -18,6 +18,13 @@ def save_obj(file_path, obj):
     except Exception as e:
         raise CustomException(e,sys)
     
+def load_obj(file_path):
+    try:
+        with open(file_path,'rb') as file_obj:
+            return dill.load(file_obj)
+    except Exception as e:
+        raise CustomException(e,sys)
+
 def evaluation(y_true, y_pred):
     mae = mean_absolute_error(y_true, y_pred)
     mse = mean_squared_error(y_true, y_pred)

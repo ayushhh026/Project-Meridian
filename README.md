@@ -26,7 +26,7 @@
 
 <br/>
 
-> **Modular Pipeline · CatBoost · FastAPI · Dual Deployment (EBS + Docker/ECR/EC2)**
+> **Modular Pipeline · Regression · FastAPI · Dual Deployment (EBS + Docker/ECR/EC2)**
 
 </div>
 

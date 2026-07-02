@@ -98,6 +98,7 @@ The selection logic deliberately rewards the model with the **smallest generaliz
 
 Linear Regression came out on top for a structural reason, not a lack of competition: once `data_transformation.py` has already handled categorical encoding, scaling, and imputation, much of the non-linearity in the raw signal has been absorbed upstream. At that point, ensemble methods are spending their extra capacity chasing noise rather than real structure — which is exactly what the train–test gap exposes. The pipeline's job was never to force the most complex model into production; it was to find the one that generalizes best, and the logging shows its work.
 
+---
 
 ## Deployment — v1 · AWS Elastic Beanstalk + CodePipeline
 

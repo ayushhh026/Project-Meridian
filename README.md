@@ -162,7 +162,7 @@ GitHub (main branch)
 
 A dedicated IAM user was created for the GitHub Actions runner with `AmazonEC2ContainerRegistryFullAccess` and `AmazonEC2FullAccess`, scoping exactly what the pipeline needs to push images and manage the deployment target.
 
-![IAM User — EC2 and ECR Permissions](https://github.com/user-attachments/assets/PLACEHOLDER_iam_permissions)
+<img width="1912" height="812" alt="Screenshot 2026-06-29 183039" src="https://github.com/user-attachments/assets/1767f5d2-c0ce-497b-9e06-f0bc7ecfc2d3" />
 
 ### Self-Hosted Runner — Registration on EC2
 

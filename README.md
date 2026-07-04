@@ -194,7 +194,7 @@ All AWS credentials and ECR configuration are stored as encrypted GitHub reposit
 
 The full pipeline — Continuous Integration → Build & Push Docker Image → Continuous Deployment — completing end to end in under 2 minutes.
 
-![GitHub Actions — Full CI/CD Pipeline Success](https://github.com/user-attachments/assets/PLACEHOLDER_pipeline_success)
+<img width="1917" height="693" alt="Screenshot 2026-06-29 192908" src="https://github.com/user-attachments/assets/437ddd18-05a9-48c3-a7f0-70224d64e4c8" />
 
 ### EC2 Runner — Listening for Jobs, Deployment Succeeded
 

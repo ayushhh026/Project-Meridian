@@ -188,7 +188,7 @@ All AWS credentials and ECR configuration are stored as encrypted GitHub reposit
 | `AWS_ECR_LOGIN_URI` | ECR registry login URI |
 | `ECR_REPOSITORY_NAME` | Target ECR repository name |
 
-![GitHub Actions Secrets — AWS Configuration](https://github.com/user-attachments/assets/PLACEHOLDER_secrets)
+<img width="1916" height="960" alt="Screenshot 2026-06-29 191641" src="https://github.com/user-attachments/assets/35b08594-9264-4ca7-8711-25dcd68e338d" />
 
 ### CI/CD Pipeline — All 3 Jobs Succeeded
 

@@ -174,7 +174,7 @@ GitHub Actions doesn't deploy to private infrastructure by default — a self-ho
 
 Once registered, the runner shows up under the repo's Actions settings, ready to pick up deployment jobs.
 
-![Self-Hosted Runner — Idle and Ready](https://github.com/user-attachments/assets/PLACEHOLDER_runner_idle)
+<img width="1917" height="867" alt="Screenshot 2026-06-29 190432" src="https://github.com/user-attachments/assets/10e8ea01-2cf7-4c2e-9518-e1b1f4b626fa" />
 
 ### Repository Secrets — AWS Credentials
 

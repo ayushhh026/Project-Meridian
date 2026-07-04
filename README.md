@@ -168,7 +168,7 @@ A dedicated IAM user was created for the GitHub Actions runner with `AmazonEC2Co
 
 GitHub Actions doesn't deploy to private infrastructure by default — a self-hosted runner installed directly on the EC2 instance bridges that gap, letting the deployment job execute commands on the actual target machine.
 
-![Self-Hosted Runner Registration](https://github.com/user-attachments/assets/PLACEHOLDER_runner_registration)
+<img width="1918" height="482" alt="Screenshot 2026-06-29 190030" src="https://github.com/user-attachments/assets/e969ee1d-15bd-4f41-8a7e-b2864f2abb9e" />
 
 ### Self-Hosted Runner — Active and Idle
 

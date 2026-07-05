@@ -224,7 +224,7 @@ Auto-generated OpenAPI docs (`/docs`) confirm the FastAPI app is fully operation
 
 The target instance (`project-meridian`, `t3.micro`) passing all 3/3 status checks.
 
-![EC2 Instance — Running, 3/3 Checks Passed](https://github.com/user-attachments/assets/PLACEHOLDER_ec2_instance)
+<img width="1593" height="357" alt="Screenshot 2026-06-29 193804" src="https://github.com/user-attachments/assets/29dccf67-ebe0-4368-a19a-a90c744d998c" />
 
 ---
 

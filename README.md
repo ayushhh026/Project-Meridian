@@ -212,7 +212,7 @@ The built image lands in a private ECR repository (`project-meridian`), tagged `
 
 The containerized app running directly on the EC2 public DNS, port 8000.
 
-![Live on EC2](https://github.com/user-attachments/assets/PLACEHOLDER_ec2_live)
+<img width="1917" height="897" alt="Screenshot 2026-06-29 193607" src="https://github.com/user-attachments/assets/e1aa1b57-cc80-451f-b49a-84a5e5a592b3" />
 
 ### FastAPI Swagger Docs — Live on EC2
 

@@ -200,7 +200,7 @@ The full pipeline — Continuous Integration → Build & Push Docker Image → C
 
 Terminal on the EC2 instance showing the self-hosted runner picking up the deployment job in real time. The first run failed, the second succeeded — a real debugging cycle, not a one-shot lucky deploy.
 
-![EC2 Terminal — Runner Listening and Job Result](https://github.com/user-attachments/assets/PLACEHOLDER_ec2_terminal)
+<img width="1907" height="663" alt="Screenshot 2026-06-29 192945" src="https://github.com/user-attachments/assets/0bfb22fe-f995-481f-b741-6f736ae3d1bb" />
 
 ### Amazon ECR — Docker Image Pushed
 

@@ -218,7 +218,7 @@ The containerized app running directly on the EC2 public DNS, port 8000.
 
 Auto-generated OpenAPI docs (`/docs`) confirm the FastAPI app is fully operational inside the container, with both `GET /` and `GET /predict` routes registered.
 
-![FastAPI Swagger UI on EC2](https://github.com/user-attachments/assets/PLACEHOLDER_swagger_ec2)
+<img width="1918" height="952" alt="Screenshot 2026-06-29 193635" src="https://github.com/user-attachments/assets/086393ca-b51c-4624-9974-03d88f604fea" />
 
 ### EC2 Instance — Running and Healthy
 

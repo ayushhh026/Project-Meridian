@@ -206,7 +206,7 @@ Terminal on the EC2 instance showing the self-hosted runner picking up the deplo
 
 The built image lands in a private ECR repository (`project-meridian`), tagged `latest`, ready to be pulled by the deployment job.
 
-![Uploading Screenshot 2026-06-29 193027.png…]()
+<img width="1906" height="456" alt="Screenshot 2026-06-29 193027" src="https://github.com/user-attachments/assets/f63bf1b5-9a00-4eb8-ae05-d458faf8bc24" />
 
 ### Live on EC2
 

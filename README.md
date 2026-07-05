@@ -206,7 +206,7 @@ Terminal on the EC2 instance showing the self-hosted runner picking up the deplo
 
 The built image lands in a private ECR repository (`project-meridian`), tagged `latest`, ready to be pulled by the deployment job.
 
-![Amazon ECR — Pushed Docker Image](https://github.com/user-attachments/assets/PLACEHOLDER_ecr_image)
+![Uploading Screenshot 2026-06-29 193027.png…]()
 
 ### Live on EC2
 

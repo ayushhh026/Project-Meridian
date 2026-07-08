@@ -100,14 +100,6 @@ Linear Regression came out on top for a structural reason, not a lack of competi
 
 ---
 
-## Application UI
-
-A custom-built frontend ships with the pipeline — not the default scaffolding, fully styled and interactive.
-
-![Project Meridian Landing Page](https://github.com/user-attachments/assets/PLACEHOLDER_landing_page)
-
----
-
 ## Deployment — v1 · AWS Elastic Beanstalk + CodePipeline
 
 The simplest path to production: push to GitHub, CodePipeline picks it up automatically, deploys straight to Elastic Beanstalk. No manual `eb deploy`, no SSH.
@@ -128,13 +120,13 @@ AWS CodePipeline
 
 ### CodePipeline — Source + Deploy (Both Succeeded ✅)
 
-![CodePipeline — Source and Deploy Succeeded](https://github.com/user-attachments/assets/PLACEHOLDER_codepipeline)
+<img width="1913" height="797" alt="Screenshot 2026-06-28 141306" src="https://github.com/user-attachments/assets/737825f2-dc19-4275-ac42-bfe73b0d9cbb" />
 
 ### Live on Elastic Beanstalk
 
 App running on the public EBS URL — `projectmeridian.ap-south-1.elasticbeanstalk.com`.
 
-![Live on Elastic Beanstalk](https://github.com/user-attachments/assets/PLACEHOLDER_ebs_live)
+<img width="1918" height="971" alt="Screenshot 2026-06-28 141441" src="https://github.com/user-attachments/assets/7f0c7ffc-b576-4256-aafe-47eadc91350d" />
 
 ---
 
@@ -170,19 +162,19 @@ GitHub (main branch)
 
 A dedicated IAM user was created for the GitHub Actions runner with `AmazonEC2ContainerRegistryFullAccess` and `AmazonEC2FullAccess`, scoping exactly what the pipeline needs to push images and manage the deployment target.
 
-![IAM User — EC2 and ECR Permissions](https://github.com/user-attachments/assets/PLACEHOLDER_iam_permissions)
+<img width="1912" height="812" alt="Screenshot 2026-06-29 183039" src="https://github.com/user-attachments/assets/1767f5d2-c0ce-497b-9e06-f0bc7ecfc2d3" />
 
 ### Self-Hosted Runner — Registration on EC2
 
 GitHub Actions doesn't deploy to private infrastructure by default — a self-hosted runner installed directly on the EC2 instance bridges that gap, letting the deployment job execute commands on the actual target machine.
 
-![Self-Hosted Runner Registration](https://github.com/user-attachments/assets/PLACEHOLDER_runner_registration)
+<img width="1918" height="482" alt="Screenshot 2026-06-29 190030" src="https://github.com/user-attachments/assets/e969ee1d-15bd-4f41-8a7e-b2864f2abb9e" />
 
 ### Self-Hosted Runner — Active and Idle
 
 Once registered, the runner shows up under the repo's Actions settings, ready to pick up deployment jobs.
 
-![Self-Hosted Runner — Idle and Ready](https://github.com/user-attachments/assets/PLACEHOLDER_runner_idle)
+<img width="1917" height="867" alt="Screenshot 2026-06-29 190432" src="https://github.com/user-attachments/assets/10e8ea01-2cf7-4c2e-9518-e1b1f4b626fa" />
 
 ### Repository Secrets — AWS Credentials
 
@@ -196,43 +188,43 @@ All AWS credentials and ECR configuration are stored as encrypted GitHub reposit
 | `AWS_ECR_LOGIN_URI` | ECR registry login URI |
 | `ECR_REPOSITORY_NAME` | Target ECR repository name |
 
-![GitHub Actions Secrets — AWS Configuration](https://github.com/user-attachments/assets/PLACEHOLDER_secrets)
+<img width="1916" height="960" alt="Screenshot 2026-06-29 191641" src="https://github.com/user-attachments/assets/35b08594-9264-4ca7-8711-25dcd68e338d" />
 
 ### CI/CD Pipeline — All 3 Jobs Succeeded
 
 The full pipeline — Continuous Integration → Build & Push Docker Image → Continuous Deployment — completing end to end in under 2 minutes.
 
-![GitHub Actions — Full CI/CD Pipeline Success](https://github.com/user-attachments/assets/PLACEHOLDER_pipeline_success)
+<img width="1917" height="693" alt="Screenshot 2026-06-29 192908" src="https://github.com/user-attachments/assets/437ddd18-05a9-48c3-a7f0-70224d64e4c8" />
 
 ### EC2 Runner — Listening for Jobs, Deployment Succeeded
 
 Terminal on the EC2 instance showing the self-hosted runner picking up the deployment job in real time. The first run failed, the second succeeded — a real debugging cycle, not a one-shot lucky deploy.
 
-![EC2 Terminal — Runner Listening and Job Result](https://github.com/user-attachments/assets/PLACEHOLDER_ec2_terminal)
+<img width="1907" height="663" alt="Screenshot 2026-06-29 192945" src="https://github.com/user-attachments/assets/0bfb22fe-f995-481f-b741-6f736ae3d1bb" />
 
 ### Amazon ECR — Docker Image Pushed
 
 The built image lands in a private ECR repository (`project-meridian`), tagged `latest`, ready to be pulled by the deployment job.
 
-![Amazon ECR — Pushed Docker Image](https://github.com/user-attachments/assets/PLACEHOLDER_ecr_image)
+<img width="1906" height="456" alt="Screenshot 2026-06-29 193027" src="https://github.com/user-attachments/assets/f63bf1b5-9a00-4eb8-ae05-d458faf8bc24" />
 
 ### Live on EC2
 
 The containerized app running directly on the EC2 public DNS, port 8000.
 
-![Live on EC2](https://github.com/user-attachments/assets/PLACEHOLDER_ec2_live)
+<img width="1917" height="897" alt="Screenshot 2026-06-29 193607" src="https://github.com/user-attachments/assets/e1aa1b57-cc80-451f-b49a-84a5e5a592b3" />
 
 ### FastAPI Swagger Docs — Live on EC2
 
 Auto-generated OpenAPI docs (`/docs`) confirm the FastAPI app is fully operational inside the container, with both `GET /` and `GET /predict` routes registered.
 
-![FastAPI Swagger UI on EC2](https://github.com/user-attachments/assets/PLACEHOLDER_swagger_ec2)
+<img width="1918" height="952" alt="Screenshot 2026-06-29 193635" src="https://github.com/user-attachments/assets/086393ca-b51c-4624-9974-03d88f604fea" />
 
 ### EC2 Instance — Running and Healthy
 
 The target instance (`project-meridian`, `t3.micro`) passing all 3/3 status checks.
 
-![EC2 Instance — Running, 3/3 Checks Passed](https://github.com/user-attachments/assets/PLACEHOLDER_ec2_instance)
+<img width="1593" height="357" alt="Screenshot 2026-06-29 193804" src="https://github.com/user-attachments/assets/29dccf67-ebe0-4368-a19a-a90c744d998c" />
 
 ---
 
